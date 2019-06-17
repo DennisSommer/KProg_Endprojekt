@@ -1,5 +1,7 @@
 package main;
 
-public class MainModel {
+import java.util.*;
+
+public class MainModel extends Observable {
 
 }
