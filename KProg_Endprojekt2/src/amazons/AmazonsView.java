@@ -1,17 +1,16 @@
 package amazons;
 
 import java.awt.*;
+import java.util.*;
 import javax.swing.*;
 import main.MainView;
 
 @SuppressWarnings("serial")
 public class AmazonsView extends JInternalFrame {
 
-	private JPanel panel;
 	private MainView view;
 	private AmazonsController amazonsController;
 	private AmazonsModel model;
-	Container ct;
 	
 	public AmazonsView(MainView view, int counter) {
 		super("Amazons " + counter,true, true, false, true);
@@ -23,13 +22,11 @@ public class AmazonsView extends JInternalFrame {
 	}
 	
 	private void initFieldChooser() {
-		panel = new JPanel();
 		this.setSize(200,200);
 		this.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
 		this.setLocation(view.getWidth()/2-this.getWidth()/2,view.getHeight()/2-this.getHeight()/2);
 		this.setLayout(new GridLayout(2,1));
 		this.setVisible(true);
-		panel.setBackground(Color.black);
 		
 	}
 	
@@ -52,14 +49,14 @@ public class AmazonsView extends JInternalFrame {
 		this.setSize(width, height);
 		this.setLocation(view.getWidth()/2-this.getWidth()/2, view.getHeight()/2-this.getHeight()/2);
 		
-		ct = this.getContentPane();
+		Container ct = this.getContentPane();
 		ct.removeAll();
 		
 	}
 	
 	protected void buildMap(int mapSize, int[][] mapArray) {
 		System.out.println("Building Map");
-		GameTile[][] map = model.getGameTileMap();
+		GameTile[][] map =  model.getGameTileMap();
 		
 		int fieldCounter = 0;
 		int tileCounter = 0;
@@ -69,12 +66,14 @@ public class AmazonsView extends JInternalFrame {
 		
 		boolean patterner = false;
 		
-		ct = this.getContentPane();
+		Container ct = this.getContentPane();
 		ct.setLayout(new GridLayout(mapSize, mapSize));
 		
 		for(GameTile[] field : map) {
 			for(GameTile tile : field) {	
 				tile = new GameTile(mapArray[fieldCounter][tileCounter]);
+				tile.setPosition(new Point(fieldCounter, tileCounter));
+				tile.setVisitors(new HashMap<Integer, GamePiece>());
 				tile.addMouseListener(amazonsController);
 				if(!patterner) {
 					tile.setBackground(tileColorDark);
@@ -82,8 +81,7 @@ public class AmazonsView extends JInternalFrame {
 				} else if(patterner) {
 					tile.setBackground(tileColorLight);
 					patterner = false;
-				}
-				
+				} 
 				map[fieldCounter][tileCounter] = tile;
 				ct.add(tile);
 				tileCounter++;

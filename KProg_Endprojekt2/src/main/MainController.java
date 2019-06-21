@@ -37,13 +37,6 @@ public class MainController implements ActionListener, MouseListener{
 		System.out.println("Amazons Gestartet");
 	}
 	
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		System.out.println(e.getActionCommand());
-		methodInvoke(e.getActionCommand());
-	}
-	
 	protected void methodInvoke(String command) {
 		try {
 			Method method = this.getClass().getDeclaredMethod(command);
@@ -53,6 +46,11 @@ public class MainController implements ActionListener, MouseListener{
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		methodInvoke(e.getActionCommand());
 	}
 
 	@Override

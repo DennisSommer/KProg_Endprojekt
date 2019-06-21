@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class Player {
 
 	private boolean hisTurn;
-	private boolean hasShot;
 	
 	private Color playerColor;
 	private GamePiece gamePiece;
@@ -19,7 +18,6 @@ public class Player {
 	public Player(int playerNumber, int pieceAmount) {
 		setPlayerNumber(playerNumber);
 		setHisTurn(playerNumber);
-		setHasShot(false);
 		setPlayerColor(playerNumber);
 		setPlayerPieces(pieceAmount);
 		
@@ -77,14 +75,6 @@ public class Player {
 		} else if(playerNumber == 2) {
 			this.hisTurn = false;
 		}
-	}
-
-	public boolean isHasShot() {
-		return hasShot;
-	}
-
-	public void setHasShot(boolean hasShot) {
-		this.hasShot = hasShot;
 	}
 	
 }

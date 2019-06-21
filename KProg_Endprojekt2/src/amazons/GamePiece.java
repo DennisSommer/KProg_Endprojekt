@@ -1,6 +1,8 @@
 package amazons;
 
 import java.awt.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 
@@ -9,22 +11,20 @@ public class GamePiece extends JLabel {
 
 	
 	private boolean isMoveable;
+	private int pieceNumber;
 	private Player player;
 	private Color pieceColor;
 	private GameTile occupiedTile;
+	private ArrayList<GameTile> movementRange;
 	private String imageURL;
-	
-	//TODO Move function/Shot Function
-	
-	//TODO Check where on map
 	
 	//TODO Check cornered/not moveable
 	
 	public GamePiece(Player player) {
-		//this.setPreferredSize(new Dimension(50,50));
 		setMoveable(true);
 		setPlayer(player);
 		setPieceColor(player.getPlayerColor());
+		setMovementRange(new ArrayList<GameTile>());
 		setImage();
 	}
 	
@@ -76,5 +76,25 @@ public class GamePiece extends JLabel {
 			this.imageURL = "figure_white.png";
 		}
 		
+	}
+
+	public int getPieceNumber() {
+		return pieceNumber;
+	}
+
+	public void setPieceNumber(int pieceNumber) {
+		this.pieceNumber = pieceNumber;
+	}
+
+	public ArrayList<GameTile> getMovementRange() {
+		return movementRange;
+	}
+
+	public void setMovementRange(GameTile movementRange) {
+		this.movementRange.add(movementRange);
+	}
+	
+	public void setMovementRange(ArrayList<GameTile> movementRange) {
+		this.movementRange = movementRange;
 	}
 }

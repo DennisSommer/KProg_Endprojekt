@@ -22,13 +22,15 @@ public class AmazonsModel extends Observable {
 	private int[][] mapSizeSix = 	{
 										{0,0,2,0,0,0},
 										{0,0,0,0,0,0},
-										{0,0,0,0,0,1},
+										{0,0,0,0,0,2},
 										{1,0,0,0,0,0},
 										{0,0,0,0,0,0},
-										{0,0,0,2,0,0},
+										{0,0,0,1,0,0},
 									};
+	private Map<Integer, int[][]> mapChanges = new HashMap<Integer, int[][]>(200);
 	private GameTile[][] gameTileMap;
 	private GamePiece pieceToMove;
+	private ArrayList<Player> players;
 	private GameTile clickedTile;
 	private Player turningPlayer;
 	private Player idlingPlayer;
@@ -36,7 +38,14 @@ public class AmazonsModel extends Observable {
 	private int pieceAmount;
 	
 	public AmazonsModel() {
-		
+	}
+
+	public void setMap(int[][] map) {
+		this.map = map;
+	}
+
+	public int[][] getMap() {
+		return map;
 	}
 	
 	public void setMapSize(int mapSize) {
@@ -55,14 +64,10 @@ public class AmazonsModel extends Observable {
 			break;
 		}
 	}
-	
-	public int[][] getMap() {
-		return map;
-	}
 
 	public int getMapSize() {
 		return map[0].length;
-	}
+	}	
 
 	public GameTile[][] getGameTileMap() {
 		return gameTileMap;
@@ -71,8 +76,11 @@ public class AmazonsModel extends Observable {
 	public void setGameTileMap(GameTile[][] gameTileMap) {
 		this.gameTileMap = gameTileMap;
 	}
+	public void setGameTileMap() {
+		this.gameTileMap = null;
+	}
 
-	private void setPieceAmount(int pieceAmount) {
+	public void setPieceAmount(int pieceAmount) {
 		this.pieceAmount = pieceAmount;
 	}
 	
@@ -124,5 +132,25 @@ public class AmazonsModel extends Observable {
 	
 	public void setPieceToMove(GameTile tileWithPiece) {
 		this.pieceToMove = tileWithPiece.getOccupyingPiece();
+	}
+
+	public Map<Integer, int[][]> getMapChanges() {
+		return this.mapChanges;
+	}
+	
+	public void setMapChanges(Map<Integer, int[][]> mapChanges) {
+		this.mapChanges.putAll(mapChanges);
+	}
+	
+	public void setMapChanges(int[][] mapChanges) {
+		this.mapChanges.put(this.mapChanges.size(), mapChanges);
+	}
+
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
 	}
 }
