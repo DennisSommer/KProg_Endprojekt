@@ -2,9 +2,13 @@ package amazons;
 
 import java.awt.*;
 import java.util.*;
-
 import javax.swing.*;
 
+/**
+ * 
+ * @author Dennis Sommer(200925)
+ *
+ */
 @SuppressWarnings("serial")
 public class GameTile extends JPanel {
 

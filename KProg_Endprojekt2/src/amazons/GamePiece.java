@@ -5,7 +5,11 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-
+/**
+ * 
+ * @author Dennis Sommer(200925)
+ *
+ */
 @SuppressWarnings("serial")
 public class GamePiece extends JLabel {
 

@@ -3,6 +3,11 @@ package amazons;
 import java.awt.Component;
 import java.util.*;
 
+/**
+ * 
+ * @author Dennis Sommer(200925)
+ *
+ */
 public class AmazonsModel extends Observable {
 
 	

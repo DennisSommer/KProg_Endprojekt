@@ -5,6 +5,11 @@ import java.util.*;
 
 import main.MainController;
 
+/**
+ * 
+ * @author Dennis Sommer(200925)
+ *
+ */
 public class AmazonsController extends MainController  {
 
 	AmazonsModel model;
@@ -293,11 +298,11 @@ public class AmazonsController extends MainController  {
 		
 		
 		if(currentTurns.get(0) == -1) {
-			resetBoard(targetTurns.get(0), model.getMapChanges().size() -1);
+			resetBoard(targetTurns.get(0), model.getMapChanges().size() -1, false);
 			targetTurns.remove(0);
 			currentTurns.remove(0);
 		} else {
-			resetBoard(targetTurns.get(0), currentTurns.get(0));
+			resetBoard(targetTurns.get(0), currentTurns.get(0), false);
 			targetTurns.remove(0);
 			currentTurns.remove(0);
 		}
@@ -307,14 +312,14 @@ public class AmazonsController extends MainController  {
 	private void undoLastTurn() {
 		Map<Integer, int[][]> mapChanges = model.getMapChanges();
 		
-		resetBoard(mapChanges.size() -2, mapChanges.size()-1);
+		resetBoard(mapChanges.size() -2, mapChanges.size()-1, true);
 		
 		mapChanges.remove(mapChanges.size() -1);
 		model.setMapChanges(mapChanges);
 	}
 	
 
-	private void resetBoard(int targetTurn, int currentTurn) {
+	private void resetBoard(int targetTurn, int currentTurn, boolean undo) {
 		int[][] currentMapping = model.getMapChanges().get(currentTurn);
 		int[][] targetMapping = model.getMapChanges().get(targetTurn);
 		ArrayList<GameTile> targetMappingTileList = new ArrayList<GameTile>();
@@ -331,11 +336,11 @@ public class AmazonsController extends MainController  {
 			}
 		}
 		for(int i = 0; i < targetMappingTileList.size(); i++) {
-			recalibrateTile(targetMappingTileList.get(i), pieceList.get(i), mappingMethodList.get(i));
+			recalibrateTile(targetMappingTileList.get(i), pieceList.get(i), mappingMethodList.get(i), undo);
 		}
 	}
 	
-	private void recalibrateTile(GameTile tile, GamePiece piece, int method) {
+	private void recalibrateTile(GameTile tile, GamePiece piece, int method, boolean undo) {
 		
 		if(method == 0) {
 			cleanTile(tile);
@@ -354,7 +359,7 @@ public class AmazonsController extends MainController  {
 		if(model.getActionToDo() == 1) {
 			switchPlayerTurns();
 			model.setActionToDo(3);
-		} else {
+		} else if(undo) {
 			model.setActionToDo(model.getActionToDo()-1);
 		}
 	}

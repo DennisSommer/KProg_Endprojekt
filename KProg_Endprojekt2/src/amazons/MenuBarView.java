@@ -4,6 +4,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+/**
+ * 
+ * @author Dennis Sommer(200925)
+ *
+ */
 public class MenuBarView {
 
 		AmazonsController controller;

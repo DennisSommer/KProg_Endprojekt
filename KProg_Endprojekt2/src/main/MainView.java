@@ -3,6 +3,11 @@ package main;
 import javax.swing.*;
 import java.awt.*;
 
+/** Main class that is initiated by startup
+ * 
+ * @author Dennis Sommer(200925)
+ * 
+ */
 @SuppressWarnings("serial")
 public class MainView extends JFrame {
 
@@ -15,7 +20,9 @@ public class MainView extends JFrame {
 		main.setVisible(true);
 		
 	}
-	
+	/**
+	 * Creates Main Window for the Games and instantiates the Button Window
+	 */
 	public MainView() {
 		controller = new MainController();
 		controller.mainView = this;
@@ -30,6 +37,9 @@ public class MainView extends JFrame {
 		
 	}
 	
+	/**
+	 * Does the Setup for the Main Window with its default propertys
+	 */
 	private void setupWindow() {
 		this.deskPane = new JDesktopPane();
 		this.deskPane.setDesktopManager(new DefaultDesktopManager());
@@ -42,14 +52,20 @@ public class MainView extends JFrame {
 		
 	}
 	
+	/**
+	 *Anonymous Class to setup the Button Window
+	 */
 	private class ButtonView extends JFrame {
 		
-		MainView main;
+		MainView main; //MainView to be added to
 		
 		public ButtonView(MainView view) {
 			main = view;
 		}
 		
+		/**
+		 * Setup for the Button Window
+		 */
 		private void setupWindow() {
 			this.setTitle("Game Chooser");
 			this.setSize(100, 145);
@@ -59,47 +75,53 @@ public class MainView extends JFrame {
 			
 		}
 		
+		/**
+		 * Creates the Panel in which the Buttons with the correct Games attached to
+		 */
 		private void setupPanel() {
 			
-			JPanel mainPanel = new JPanel();
-			mainPanel.setLayout(new GridBagLayout());
-			GridBagConstraints constraints = new GridBagConstraints();
+			JPanel mainPanel = new JPanel(); //Panel to attach Buttons
+			mainPanel.setLayout(new GridBagLayout()); //Setup Layout
+			GridBagConstraints constraints = new GridBagConstraints(); //Set Layout Constraints
 			
-			JButton maxButton = new JButton("Max");
-			maxButton.addActionListener(controller);
-			maxButton.setActionCommand("startMax");
+			JButton maxButton = new JButton("Max"); //Create First Button
+			maxButton.addActionListener(controller); //Add the ActionListener to the Button
+			maxButton.setActionCommand("startMax"); //Tell the button what it should do
 			
+			//Give new Constraints
 			constraints.fill = GridBagConstraints.HORIZONTAL;
 			constraints.gridx = 0;
 			constraints.gridy = 0;
 			constraints.ipadx = 20;
 			constraints.ipady = 10;
 			
-			mainPanel.add(maxButton, constraints);
+			mainPanel.add(maxButton, constraints); //add button and constraints to panel
 			
-			JButton goLButton = new JButton("Game Of Life");
-			goLButton.addActionListener(controller);
-			goLButton.setActionCommand("startGameOfLife");
+			JButton goLButton = new JButton("Game Of Life"); //Create second button
+			goLButton.addActionListener(controller); //add actionListener to button
+			goLButton.setActionCommand("startGameOfLife"); //tell the button what to do
 			
+			//Give new Constraints
 			constraints.fill = GridBagConstraints.HORIZONTAL;
 			constraints.gridx = 0;
 			constraints.gridy = 1;
 			constraints.insets = new Insets(2,0,0,0);
 			
-			mainPanel.add(goLButton, constraints);
+			mainPanel.add(goLButton, constraints); //add button and constraints to panel
 			
-			JButton amazonsButton = new JButton("Amazons"); 
-			amazonsButton.addActionListener(controller);
-			amazonsButton.setActionCommand("startAmazons");
+			JButton amazonsButton = new JButton("Amazons"); //Create third button
+			amazonsButton.addActionListener(controller); //add actionListener to button
+			amazonsButton.setActionCommand("startAmazons"); //tell the button what to do
 			
+			//Give new Constraints
 			constraints.fill = GridBagConstraints.HORIZONTAL;
 			constraints.gridx = 0;
 			constraints.gridy = 2;
 			
 			
-			mainPanel.add(amazonsButton, constraints);
+			mainPanel.add(amazonsButton, constraints);//add button and constraints to panel
 			
-			this.add(mainPanel);
+			this.add(mainPanel);//add panel to frame
 			
 		}
 		

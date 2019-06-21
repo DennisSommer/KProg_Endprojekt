@@ -3,6 +3,11 @@ package amazons;
 import java.awt.Color;
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Dennis Sommer(200925)
+ *
+ */
 public class Player {
 
 	private boolean hisTurn;
@@ -10,10 +15,7 @@ public class Player {
 	private Color playerColor;
 	private GamePiece gamePiece;
 	private ArrayList<GamePiece> playerPieces;
-	
 	private int playerNumber;
-	
-	
 	
 	public Player(int playerNumber, int pieceAmount) {
 		setPlayerNumber(playerNumber);
