@@ -1,6 +1,8 @@
 package gameOfLife;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Logic extends JFrame{
 
@@ -27,6 +29,7 @@ public class Logic extends JFrame{
             {0,0,0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0,0,0}
     };
+    //Timer timer = null;
 
     public Logic(){
         this.rows = 12;
@@ -130,12 +133,14 @@ public class Logic extends JFrame{
 
     public void evolveGeneration(){
         for(int i = 0; i <= 500; i++){
-            //try{
-                //Thread.sleep(700);
-                nextGeneration(currentState,rows,cols);
-            //} catch (InterruptedException e){
-            //    e.printStackTrace();
-            //}
+            Timer timer = new Timer(500, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    nextGeneration(currentState,rows,cols);
+                }
+            });
+            timer.setRepeats(true);
+            timer.start();
         }
     }
 }
