@@ -36,21 +36,8 @@ public class MainController implements ActionListener, MouseListener{
 	 */
 	@SuppressWarnings("unused")
 	private void startGameOfLife() {
-		int[][] state = { //testing array
-				{0,1,0,0,0,0,0,0,0,0,0,0},
-				{0,0,1,0,0,0,0,0,0,0,0,0},
-				{1,1,1,0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0,0,0,0}
-		};
-		Logic goLView = new Logic(12,12,state);
+
+		Logic logi = new Logic();
 		System.out.println("Game of Life gestartet");
 	}
 	/**

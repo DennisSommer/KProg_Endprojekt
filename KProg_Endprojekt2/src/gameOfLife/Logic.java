@@ -13,13 +13,28 @@ public class Logic extends JFrame{
     int[][] currentState;
     int rows;
     int cols;
+    int[][] state = { //testing array
+            {0,1,0,0,0,0,0,0,0,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0},
+            {1,1,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0}
+    };
 
-    public Logic(int rows, int cols, int[][] state){
-        this.rows = rows;
-        this.cols = cols;
+    public Logic(){
+        this.rows = 12;
+        this.cols = 12;
+
 
         //JFrame stuff
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setSize(500,500);
         this.setTitle("Game of Life");
 
@@ -27,6 +42,7 @@ public class Logic extends JFrame{
         JPanel mainPanel = new JPanel(new GridLayout(rows, cols));
 
         panels = new JPanel[rows][cols];
+
         this.currentState = state;
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < cols; j++){
@@ -114,12 +130,12 @@ public class Logic extends JFrame{
 
     public void evolveGeneration(){
         for(int i = 0; i <= 500; i++){
-            try{
-                Thread.sleep(700);
+            //try{
+                //Thread.sleep(700);
                 nextGeneration(currentState,rows,cols);
-            } catch (InterruptedException e){
-                e.printStackTrace();
-            }
+            //} catch (InterruptedException e){
+            //    e.printStackTrace();
+            //}
         }
     }
 }
