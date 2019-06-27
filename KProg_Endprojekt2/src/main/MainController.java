@@ -26,8 +26,8 @@ public class MainController implements ActionListener, MouseListener{
 	 */
 	@SuppressWarnings("unused")
 	private void startMax() {
-		MaxView maxView = new MaxView(mainView);
-		mainView.add(maxView);
+		MainMenu menu = new MainMenu();
+		//mainView.add(maxView);
 		System.out.println("Max Gestartet");
 	}
 	/**
@@ -36,7 +36,21 @@ public class MainController implements ActionListener, MouseListener{
 	 */
 	@SuppressWarnings("unused")
 	private void startGameOfLife() {
-		LifeView goLView = new LifeView();
+		int[][] state = { //testing array
+				{0,1,0,0,0,0,0,0,0,0,0,0},
+				{0,0,1,0,0,0,0,0,0,0,0,0},
+				{1,1,1,0,0,0,0,0,0,0,0,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0}
+		};
+		Logic goLView = new Logic(12,12,state);
 		System.out.println("Game of Life gestartet");
 	}
 	/**
